@@ -1,1 +1,30 @@
+class Solution {
+    public static boolean isBoomerang(int[][] points) {
+        int x1 = points[0][0]; //row 0 column 0
+        int y1 = points[0][1]; // 0 -> x-axis ; 1 -> y-axis
 
+        int x2 = points[1][0];
+        int y2 = points[1][1];
+
+        int x3 = points[2][0];
+        int y3 = points[2][1];
+
+        //from the coolinear checking formula: (y2-y1)/(x2-x1)=(y3-y2)/(x3-x2), cross multiply it to avoid division by zero
+        int product1 = (y2 - y1) * (x3 - x2);
+        int product2 = (y3 - y2) * (x2 - x1);
+        return product1 != product2;
+
+    }
+
+    public static void main(String[] args) {
+        //Example 1
+        int[][] points1 = { { 1, 1 }, { 2, 3 }, { 3, 2 } };
+        System.out.println("Input: " + points1);
+        System.out.println("Output: " + isBoomerang(points1));
+
+        //Example 2
+        int[][] points2 = { { 1, 1 }, { 2, 2 }, { 3, 3 } };
+        System.out.println("Input: " + points2);
+        System.out.println("Output: " + isBoomerang(points2));
+    }
+}
